@@ -15,17 +15,19 @@
 }
 
 button.submit-button {
-    background-color: #007bff;
+    background-color: #3f51b5;
     color: #ffffff;
     margin-right: 16px;
     border-radius: 25px;
     border: none;
     padding: 12px 24px;
     font-size: 18px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 button.submit-button:hover {
-    background-color: #0056b3;
+    background-color: #2d3c8f;
 }
 
 button.cancel-button {
@@ -35,8 +37,10 @@ button.cancel-button {
     border: none;
     padding: 12px 24px;
     font-size: 18px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 button.cancel-button:hover {
-    background-color: #c82333;
+    background-color: #941824;
 }
