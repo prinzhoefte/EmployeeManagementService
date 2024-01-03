@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Employee } from '../Employee';
+import { Employee } from '../models/Employee';
 
 @Component({
     selector: 'app-add-employee',

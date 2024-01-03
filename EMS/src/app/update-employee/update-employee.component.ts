@@ -1,74 +1,74 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Employee } from '../Employee';
+import { Employee, EmployeeUpdate } from '../models/Employee';
 
 @Component({
     selector: 'app-update-employee',
     templateUrl: './update-employee.component.html',
     styleUrls: ['./update-employee.component.css']
 })
-export class UpdateEmployeeComponent {
+export class UpdateEmployeeComponent implements OnInit {
+    skillSetItems: any[] = [];
+    id: number = 0;
+    employee: Employee = {};
+    selectedSkills: any[] = [];
+
     constructor(private employeeService: EmployeeService, private router: Router) { }
 
-    skillSetItems: any[] = [];
-    id = Number(this.router.url.split('/')[2]);
-    employee: Employee = new Employee();
-    skillSet = this.employeeService.getSkillOfEmployee(this.id);
+    ngOnInit(): void {
+        this.id = Number(this.router.url.split('/')[2]);
+        this.fetchEmployee();
+        this.fetchSkillSetItems();
+    }
 
-    ngOnInit() {
+    private fetchEmployee(): void {
         this.employeeService.getEmployee(this.id).subscribe(
             data => {
                 this.employee = data;
-                console.log("Skillset: " + this.employee.skillSet);
+                this.selectedSkills = this.employee.skillSet || [];
             },
-            error => {
-                console.error('Error fetching employee details', error);
-            }
-        );
-
-        this.employeeService.getSkillSetItems().subscribe(
-            data => {
-                this.skillSetItems = data;
-            },
-            error => {
-                console.error('Error fetching skill set items', error);
-            }
+            error => console.error('Error fetching employee details', error)
         );
     }
 
-    onSubmit(form: NgForm) {
+    private fetchSkillSetItems(): void {
+        this.employeeService.getSkillSetItems().subscribe(
+            data => this.skillSetItems = data,
+            error => console.error('Error fetching skill set items', error)
+        );
+    }
+
+    compareFn(item1: any, item2: any): boolean {
+        return item1 && item2 ? item1.id === item2.id : item1 === item2;
+    }
+
+    onSubmit(form: NgForm): void {
         if (form.valid) {
-            if (form.value.postcode.length != 5) {
+            if (form.value.postcode.length !== 5) {
                 alert("Postcode must be 5 digits");
                 return;
             }
 
-            this.employee = {
-                lastName: form.value.lastName,
-                firstName: form.value.firstName,
-                street: form.value.street,
-                postcode: form.value.postcode,
-                city: form.value.city,
-                phone: form.value.phone,
-                skillSet: form.value.skillSet
+            const skillSet = form.value.skillSet.map((skill: any) => skill.id);
+            
+            const updateEmployee: EmployeeUpdate = {
+                ...form.value,
+                skillSet
             };
 
-            this.employeeService.updateEmployee(this.employee, this.id).subscribe(
+            this.employeeService.updateEmployee(updateEmployee, this.id).subscribe(
                 response => {
                     console.log('Employee updated successfully', response);
                     this.router.navigate(['/']);
                 },
-                error => {
-                    console.error('Error updating employee', error);
-                }
+                error => console.error('Error updating employee', error)
             );
         }
     }
 
-    onCancel() {
+    onCancel(): void {
         this.router.navigate(['/']);
     }
 }
-

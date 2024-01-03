@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Employee } from './Employee';
+import { Observable, map } from 'rxjs';
+import { Employee, EmployeeUpdate } from './models/Employee';
 
 @Injectable({
     providedIn: 'root'
@@ -27,8 +27,8 @@ export class EmployeeService {
         return this.http.post<Employee>(`${this.apiUrl}/employees`, employee);
     }
 
-    updateEmployee(employee: Employee, id: Number): Observable<Employee> {
-        return this.http.put<Employee>(`${this.apiUrl}/employees/${id}`, employee);
+    updateEmployee(employee: EmployeeUpdate, id: Number): Observable<EmployeeUpdate> {
+        return this.http.put<EmployeeUpdate>(`${this.apiUrl}/employees/${id}`, employee);
     }
 
     deleteEmployee(id: number): Observable<Employee> {
@@ -39,8 +39,8 @@ export class EmployeeService {
         return this.http.get<any[]>(`${this.apiUrl}/qualifications`);
     }
 
-    getSkillOfEmployee(id: number): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/employees/${id}/qualifications`);
+    getSkillOfEmployee(employeeId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/employees/${employeeId}`);
     }
 
     addSkillToEmployee(id: number, skill: any): Observable<any[]> {

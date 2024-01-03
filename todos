@@ -1,5 +1,4 @@
 1. Create delete view from the update template
-2. Finish update view
+2. Finish update view (only send the skill ID for the update and not the skill name (Create a new type for that (employeeUpdate)))
 3. Create profile page
 4. Create Popup Profile page (Upper corner)
-5. Correctly get the skills for the update page (At the moment its just [object Object])

@@ -51,11 +51,11 @@
 
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Skill Set</mat-label>
-            <mat-select name="skillSet" [(ngModel)]="employee.skillSet" multiple required>
-                <mat-option *ngFor="let item of skillSetItems" [value]="item.id">
-                  {{ item.skill }}
+            <mat-select name="skillSet" [(ngModel)]="selectedSkills" [compareWith]="compareFn" multiple required>
+                <mat-option *ngFor="let item of skillSetItems" [value]="item">
+                    {{ item.skill }}
                 </mat-option>
-              </mat-select>
+            </mat-select>
             <mat-error>
                 Skill Set is <strong>required</strong>
             </mat-error>
