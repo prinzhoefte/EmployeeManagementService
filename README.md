@@ -18,37 +18,31 @@ A simple **Employee Management Service** built with **Angular** for managing emp
 ## Getting Started
 
 1. Clone the repository:
-
 ```bash
    git clone https://github.com/prinzhoefte/EmployeeManagementService.git
 ```
 
 2. Navigate to the project directory:
-
 ```bash
    cd EmployeeManagementService
 ```
 
 3. Start the docker container:
-
 ```bash
    docker-compose up
 ```
 
 4. Navigate to the project directory:
-
 ```bash
    cd EMS
 ```
 
 5. Install the dependencies:
-
 ```bash
    npm install
 ```
 
 6. Start the development server:
-
 ```bash
    ng serve
 ```
