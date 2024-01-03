@@ -1,0 +1,38 @@
+.spacer {
+    flex: 1;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.tab-text {
+    font-size: 25px;
+}
+
+.mat-toolbar {
+    height: 64px;
+    padding: 0 16px;
+    font-size: 18px;
+}
+
+.tab-button {
+    margin: 10px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Arial', sans-serif; /* Use a simple font */
+    font-size: 25px;
+    color: white;
+    font-weight: bold;
+}
+
+.tab-button:hover {
+    color: #c0c0c0;
+}
+
+mat-icon {
+    font-size: 50px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}

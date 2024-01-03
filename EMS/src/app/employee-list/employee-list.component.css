@@ -1,3 +1,26 @@
 .table-button {
     margin-right: 16px;
 }
+
+.filter-field {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    margin: 10px;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    font-size: 14px;
+    padding: 8px;
+}
+
+.filter-type {
+    flex: 1;
+    margin-right: 10px;
+    font-size: 14px;
+}

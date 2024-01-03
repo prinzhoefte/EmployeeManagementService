@@ -12,11 +12,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
         AppComponent,
-        EmployeeListComponent
+        EmployeeListComponent,
+        TopBarComponent,
+        ProfileComponent,
+        AddEmployeeComponent
     ],
     imports: [
         BrowserModule,
@@ -28,7 +37,10 @@ import { MatIconModule } from '@angular/material/icon';
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
-        MatIconModule
+        MatIconModule,
+        MatSelectModule,
+        MatToolbarModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

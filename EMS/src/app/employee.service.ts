@@ -7,7 +7,7 @@ import { Employee } from './Employee';
     providedIn: 'root'
 })
 export class EmployeeService {
-    private apiUrl = 'http://localhost:8089/employees';
+    private apiUrl = 'http://localhost:8089';
 
     employees$: Observable<Employee[]>;
 
@@ -16,7 +16,7 @@ export class EmployeeService {
     }
 
     getEmployees(): Observable<Employee[]> {
-        return this.http.get<Employee[]>(this.apiUrl);
+        return this.http.get<Employee[]>(`${this.apiUrl}/employees`);
     }
 
     getEmployee(id: number): Observable<Employee> {
@@ -24,14 +24,18 @@ export class EmployeeService {
     }
 
     createEmployee(employee: Employee): Observable<Employee> {
-        return this.http.post<Employee>(this.apiUrl, employee);
+        return this.http.post<Employee>(`${this.apiUrl}/employees`, employee);
     }
 
     updateEmployee(employee: Employee): Observable<Employee> {
-        return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee);
+        return this.http.put<Employee>(`${this.apiUrl}/employees/${employee.id}`, employee);
     }
 
     deleteEmployee(id: number): Observable<Employee> {
-        return this.http.delete<Employee>(`${this.apiUrl}/${id}`);
+        return this.http.delete<Employee>(`${this.apiUrl}/employees/${id}`);
+    }
+
+    getSkillSetItems(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/qualifications`);
     }
 }

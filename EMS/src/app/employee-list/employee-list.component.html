@@ -1,5 +1,18 @@
 <mat-card>
-    <mat-card-title>Employee List</mat-card-title>
+    <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Filter</mat-label>
+        <div class="filter-container">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search" class="search-input">
+            <mat-select [(ngModel)]="selectedFilterField" (selectionChange)="updateFilterField($event)"
+                class="filter-type">
+                <mat-option *ngFor="let column of getFilteredColumns()" [value]="column">
+                    {{ filterTypeOptions[column] || column }}
+                </mat-option>
+            </mat-select>
+        </div>
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
     <mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
@@ -39,7 +52,7 @@
                 <button class="table-button" mat-icon-button color="primary" (click)="onEdit(employee)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="onDelete(employee)">
+                <button mat-icon-button color="warn" (click)="onDelete(employee.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </mat-cell>

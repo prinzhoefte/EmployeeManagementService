@@ -1,0 +1,42 @@
+.create-employee-container {
+    max-width: 60%;
+    margin: auto;
+    padding: 16px;
+    align-self: left;
+}
+
+.buttons-container {
+    margin-top: 16px;
+    justify-content: space-between;
+}
+
+.form-field {
+    margin: 10px;
+}
+
+button.submit-button {
+    background-color: #007bff;
+    color: #ffffff;
+    margin-right: 16px;
+    border-radius: 25px;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+}
+
+button.submit-button:hover {
+    background-color: #0056b3;
+}
+
+button.cancel-button {
+    background-color: #dc3545;
+    color: #ffffff;
+    border-radius: 25px;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+}
+
+button.cancel-button:hover {
+    background-color: #c82333;
+}
