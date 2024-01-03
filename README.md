@@ -20,7 +20,7 @@ A simple **Employee Management Service** built with **Angular** for managing emp
 1. Clone the repository:
 
 ```bash
-   git clone https://github.com/your-username/employee-management-service.git
+   git clone https://github.com/prinzhoefte/EmployeeManagementService.git
 ```
 
 2. Navigate to the project directory:
