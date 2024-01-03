@@ -5,16 +5,29 @@ import { Router } from '@angular/router';
 import { Employee } from '../Employee';
 
 @Component({
-    selector: 'app-add-employee',
-    templateUrl: './add-employee.component.html',
-    styleUrls: ['./add-employee.component.css']
+    selector: 'app-update-employee',
+    templateUrl: './update-employee.component.html',
+    styleUrls: ['./update-employee.component.css']
 })
-export class AddEmployeeComponent {
+export class UpdateEmployeeComponent {
     constructor(private employeeService: EmployeeService, private router: Router) { }
 
     skillSetItems: any[] = [];
+    id = Number(this.router.url.split('/')[2]);
+    employee: Employee = new Employee();
+    skillSet = this.employeeService.getSkillOfEmployee(this.id);
 
     ngOnInit() {
+        this.employeeService.getEmployee(this.id).subscribe(
+            data => {
+                this.employee = data;
+                console.log("Skillset: " + this.employee.skillSet);
+            },
+            error => {
+                console.error('Error fetching employee details', error);
+            }
+        );
+
         this.employeeService.getSkillSetItems().subscribe(
             data => {
                 this.skillSetItems = data;
@@ -32,7 +45,7 @@ export class AddEmployeeComponent {
                 return;
             }
 
-            let employee: Employee = {
+            this.employee = {
                 lastName: form.value.lastName,
                 firstName: form.value.firstName,
                 street: form.value.street,
@@ -42,13 +55,13 @@ export class AddEmployeeComponent {
                 skillSet: form.value.skillSet
             };
 
-            this.employeeService.createEmployee(employee).subscribe(
+            this.employeeService.updateEmployee(this.employee, this.id).subscribe(
                 response => {
-                    console.log('Employee created successfully', response);
+                    console.log('Employee updated successfully', response);
                     this.router.navigate(['/']);
                 },
                 error => {
-                    console.error('Error creating employee', error);
+                    console.error('Error updating employee', error);
                 }
             );
         }
@@ -58,3 +71,4 @@ export class AddEmployeeComponent {
         this.router.navigate(['/']);
     }
 }
+

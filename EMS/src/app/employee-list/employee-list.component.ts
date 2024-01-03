@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmployeeService } from '../employee.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-employee-list',
@@ -14,7 +15,7 @@ export class EmployeeListComponent {
     dataSource = new MatTableDataSource();
     employees$: Observable<any[]>;
 
-    constructor(private employeeService: EmployeeService) {
+    constructor(private employeeService: EmployeeService, private router: Router) {
         this.employees$ = this.employeeService.getEmployees();
         this.employees$.subscribe(data => {
             // Transform the skillSet data to a string representation
@@ -71,6 +72,6 @@ export class EmployeeListComponent {
     }
 
     onEdit(id: number) {
-        console.log('update');
+        this.router.navigate(['/updateEmployee', id]);
     }
 }

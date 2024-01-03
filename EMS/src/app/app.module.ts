@@ -18,6 +18,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
         EmployeeListComponent,
         TopBarComponent,
         ProfileComponent,
-        AddEmployeeComponent
+        AddEmployeeComponent,
+        UpdateEmployeeComponent
     ],
     imports: [
         BrowserModule,
