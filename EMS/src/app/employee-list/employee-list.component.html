@@ -60,4 +60,9 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let employee; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <div class="pagination-controls">
+        <button class="pagination-button" mat-button (click)="onPreviousPage()">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button class="pagination-button" mat-button (click)="onNextPage()">Next</button>
+    </div>
 </mat-card>

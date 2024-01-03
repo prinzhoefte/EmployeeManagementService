@@ -14,16 +14,19 @@ export class EmployeeListComponent {
     displayedColumns: string[] = ['id', 'lastName', 'firstName', 'street', 'postcode', 'city', 'phone', 'skillSet', 'actions'];
     dataSource = new MatTableDataSource();
     employees$: Observable<any[]>;
+    currentPage: number = 1;
+    pageSize: number = 10;
+    totalPages: number = 0;
 
     constructor(private employeeService: EmployeeService, private router: Router) {
         this.employees$ = this.employeeService.getEmployees();
         this.employees$.subscribe(data => {
-            // Transform the skillSet data to a string representation
             const transformedData = data.map(employee => ({
                 ...employee,
                 skillSet: employee.skillSet.map((skill: { skill: string; id: number; }) => skill.skill).join(', ')
             }));
             this.dataSource.data = transformedData;
+            this.totalPages = Math.ceil(this.dataSource.data.length / this.pageSize);
         });
     }
 
@@ -73,5 +76,17 @@ export class EmployeeListComponent {
 
     onEdit(id: number) {
         this.router.navigate(['/updateEmployee', id]);
+    }
+
+    onNextPage() {
+        if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+        }
+    }
+
+    onPreviousPage() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+        }
     }
 }
