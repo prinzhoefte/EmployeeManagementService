@@ -1,25 +1,21 @@
-export interface Skill {
+interface Human {
+    lastName?: string,
+    firstName?: string,
+    street?: string,
+    postcode?: string,
+    city?: string,
+    phone?: string
+}
+
+interface Skill {
     skillId: number;
     skill: string;
 }
 
-export interface Employee {
-    id?: number,
-    lastName?: string,
-    firstName?: string,
-    street?: string,
-    postcode?: string,
-    city?: string,
-    phone?: string,
+export interface Employee extends Human {
     skillSet?: Skill[]
 }
 
-export interface EmployeeUpdate {
-    lastName?: string,
-    firstName?: string,
-    street?: string,
-    postcode?: string,
-    city?: string,
-    phone?: string,
+export interface EmployeeUpdate extends Human {
     skillSet?: number[]
 }
