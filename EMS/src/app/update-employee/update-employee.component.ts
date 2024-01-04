@@ -11,8 +11,7 @@ import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
 export class UpdateEmployeeComponent extends BaseEmployeeComponent {
     onSubmit(form: NgForm): void {
         if (form.valid) {
-            if (form.value.postcode.length !== 5) {
-                alert("Postcode must be 5 digits");
+            if (this.checkValidity(form) === false) {
                 return;
             }
 

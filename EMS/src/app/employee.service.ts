@@ -49,7 +49,8 @@ export class EmployeeService {
         return this.http.post<any[]>(`${this.apiUrl}/employees/${id}/qualifications`, skill);
     }
 
-    deleteSkillFromEmployee(id: number, skill: any): Observable<HttpEvent<any[]>> {
-        return this.http.delete<any[]>(`${this.apiUrl}/employees/${id}/qualifications`, skill);
+    //Maybe use this for updating the employee, if only the skills are changed
+    removeSkillFromEmployee(id: number, skill: string): Observable<any[]> {
+        return this.http.delete<any[]>(`${this.apiUrl}/employees/${id}/qualifications/${skill}`);
     }
 }

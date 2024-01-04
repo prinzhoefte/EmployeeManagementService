@@ -37,6 +37,39 @@ export class BaseEmployeeComponent {
         );
     }
 
+    protected checkValidity(form: any): boolean {
+        let ret = true;
+        const nameRegex = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ]+$/;
+        const addressRegex = /^[a-zA-Z0-9öäüÖÄÜßéÉèÈáÁíÍóÓúÚñÑçÇ\s]+$/;
+        const phoneNumberRegex = /^[0-9+]{8,}$/;
+        const postcudeRegex = /^[0-9]{5}$/;
+        if (!nameRegex.test(form.value.firstName)) {
+            alert("First name must only contain letters");
+            ret = false;
+        }
+        if (!nameRegex.test(form.value.lastName)) {
+            alert("Last name must only contain letters");
+            ret = false;
+        }
+        if (!addressRegex.test(form.value.street)) {
+            alert("Street must only contain letters and numbers");
+            ret = false;
+        }
+        if (!addressRegex.test(form.value.city)) {
+            alert("City must only contain letters");
+            ret = false;
+        }
+        if (!postcudeRegex.test(form.value.postcode)) {
+            alert("Postcode must be 5 digits");
+            ret = false;
+        }
+        if (!phoneNumberRegex.test(form.value.phone)) {
+            alert("Phone number must only contain numbers and '+'");
+            ret = false;
+        }
+        return ret;
+    }
+
     compareFn(item1: any, item2: any): boolean {
         return item1 && item2 ? item1.id === item2.id : item1 === item2;
     }

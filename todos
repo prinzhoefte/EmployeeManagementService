@@ -2,3 +2,4 @@
 2. Create Popup Profile page (Upper corner)
 3. Ask Thiel why we HAVE to use the /e./id/qualifications endpoints (Unnecessary)
 4. Ask Thiel how the login should be realized because we do not use keycloak (Probably just gonna implement it anyways)
+5. Create selector for how many items are shown per page

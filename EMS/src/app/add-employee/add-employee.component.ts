@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import { EmployeeService } from '../employee.service';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Employee } from '../models/Employee';
+import { BaseEmployeeComponent } from '../base-employee/base-employee.component';
 
 @Component({
     selector: 'app-add-employee',
     templateUrl: './add-employee.component.html',
     styleUrls: ['../app.component.css']
 })
-export class AddEmployeeComponent {
-    constructor(private employeeService: EmployeeService, private router: Router) { }
-
-    skillSetItems: any[] = [];
-
-    ngOnInit() {
+export class AddEmployeeComponent extends BaseEmployeeComponent {
+    override ngOnInit() {
         this.employeeService.getSkillSetItems().subscribe(
             data => {
                 this.skillSetItems = data;
@@ -27,8 +22,7 @@ export class AddEmployeeComponent {
 
     onSubmit(form: NgForm) {
         if (form.valid) {
-            if (form.value.postcode.length != 5) {
-                alert("Postcode must be 5 digits");
+            if (this.checkValidity(form) === false) {
                 return;
             }
 
@@ -51,9 +45,5 @@ export class AddEmployeeComponent {
                 }
             );
         }
-    }
-
-    onCancel() {
-        this.router.navigate(['/']);
     }
 }
