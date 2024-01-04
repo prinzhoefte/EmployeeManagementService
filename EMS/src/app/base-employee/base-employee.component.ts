@@ -42,7 +42,7 @@ export class BaseEmployeeComponent {
         const nameRegex = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ]+$/;
         const addressRegex = /^[a-zA-Z0-9öäüÖÄÜßéÉèÈáÁíÍóÓúÚñÑçÇ\s]+$/;
         const phoneNumberRegex = /^[0-9+]{8,}$/;
-        const postcudeRegex = /^[0-9]{5}$/;
+        const postcodeRegex = /^[0-9]{5}$/;
         if (!nameRegex.test(form.value.firstName)) {
             alert("First name must only contain letters");
             ret = false;
@@ -59,7 +59,7 @@ export class BaseEmployeeComponent {
             alert("City must only contain letters");
             ret = false;
         }
-        if (!postcudeRegex.test(form.value.postcode)) {
+        if (!postcodeRegex.test(form.value.postcode)) {
             alert("Postcode must be 5 digits");
             ret = false;
         }
