@@ -12,7 +12,6 @@
         </div>
         <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-
     <mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
@@ -49,10 +48,10 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
             <mat-cell *matCellDef="let employee">
-                <button class="table-button" mat-icon-button color="primary" (click)="onEdit(employee.id)">
+                <button class="edit-button" mat-icon-button color="primary" (click)="onEdit(employee.id)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" (click)="onDelete(employee.id)">
+                <button class="delete-button" mat-icon-button color="warn" (click)="onDelete(employee.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </mat-cell>

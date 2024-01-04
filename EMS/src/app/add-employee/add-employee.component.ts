@@ -7,7 +7,7 @@ import { Employee } from '../models/Employee';
 @Component({
     selector: 'app-add-employee',
     templateUrl: './add-employee.component.html',
-    styleUrls: ['./add-employee.component.css']
+    styleUrls: ['../app.component.css']
 })
 export class AddEmployeeComponent {
     constructor(private employeeService: EmployeeService, private router: Router) { }
@@ -44,7 +44,6 @@ export class AddEmployeeComponent {
 
             this.employeeService.createEmployee(employee).subscribe(
                 response => {
-                    console.log('Employee created successfully', response);
                     this.router.navigate(['/']);
                 },
                 error => {

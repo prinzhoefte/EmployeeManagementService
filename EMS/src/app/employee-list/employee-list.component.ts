@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 export class EmployeeListComponent {
     displayedColumns: string[] = ['id', 'lastName', 'firstName', 'street', 'postcode', 'city', 'phone', 'skillSet', 'actions'];
+    employeesChunks: any[][] = [];
     dataSource = new MatTableDataSource();
     employees$: Observable<any[]>;
     currentPage: number = 1;
@@ -25,9 +26,19 @@ export class EmployeeListComponent {
                 ...employee,
                 skillSet: employee.skillSet.map((skill: { skill: string; id: number; }) => skill.skill).join(', ')
             }));
-            this.dataSource.data = transformedData;
-            this.totalPages = Math.ceil(this.dataSource.data.length / this.pageSize);
+            transformedData.sort((a, b) => a.id - b.id);
+            this.employeesChunks = this.chunkArray(transformedData, this.pageSize);
+            this.dataSource.data = this.employeesChunks[this.currentPage - 1] || [];
+            this.totalPages = this.employeesChunks.length;
         });
+    }
+
+    chunkArray(array: any[], size: number): any[][] {
+        const chunkedArray = [];
+        for (let i = 0; i < array.length; i += size) {
+            chunkedArray.push(array.slice(i, i + size));
+        }
+        return chunkedArray;
     }
 
     filterTypeOptions: { [key: string]: string } = {
@@ -61,17 +72,7 @@ export class EmployeeListComponent {
     }
 
     onDelete(id: number) {
-        this.employeeService.deleteEmployee(id).subscribe(data => {
-            this.employees$ = this.employeeService.getEmployees();
-            this.employees$.subscribe(data => {
-                this.dataSource.data = data;
-                const transformedData = data.map(employee => ({
-                    ...employee,
-                    skillSet: employee.skillSet.map((skill: { skill: string; id: number; }) => skill.skill).join(', ')
-                }));
-                this.dataSource.data = transformedData;
-            });
-        });
+        this.router.navigate(['/deleteEmployee', id]);
     }
 
     onEdit(id: number) {
@@ -81,12 +82,14 @@ export class EmployeeListComponent {
     onNextPage() {
         if (this.currentPage < this.totalPages) {
             this.currentPage++;
+            this.dataSource.data = this.employeesChunks[this.currentPage - 1];
         }
     }
 
     onPreviousPage() {
         if (this.currentPage > 1) {
             this.currentPage--;
+            this.dataSource.data = this.employeesChunks[this.currentPage - 1];
         }
     }
 }

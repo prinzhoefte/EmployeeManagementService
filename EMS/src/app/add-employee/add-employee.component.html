@@ -1,4 +1,4 @@
-<div class="create-employee-container">
+<div class="employee-container">
     <h2>Create New Employee</h2>
     <form (ngSubmit)="onSubmit(form)" #form="ngForm">
         <mat-form-field appearance="outline" class="form-field">
@@ -8,7 +8,6 @@
                 First Name is <strong>required</strong>
             </mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Last Name</mat-label>
             <input matInput name="lastName" ngModel required placeholder="Enter Last Name">
@@ -16,7 +15,6 @@
                 Last Name is <strong>required</strong>
             </mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Street</mat-label>
             <input matInput name="street" ngModel required placeholder="Enter Street">
@@ -24,7 +22,6 @@
                 Street is <strong>required</strong>
             </mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Postcode</mat-label>
             <input matInput name="postcode" ngModel required placeholder="Enter Postcode">
@@ -32,7 +29,6 @@
                 Postcode is <strong>required</strong>
             </mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>City</mat-label>
             <input matInput name="city" ngModel required placeholder="Enter City">
@@ -40,7 +36,6 @@
                 City is <strong>required</strong>
             </mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Phone</mat-label>
             <input matInput name="phone" ngModel required placeholder="Enter Phone">
@@ -48,7 +43,6 @@
                 Phone is <strong>required</strong>
             </mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="outline" class="form-field">
             <mat-label>Skill Set</mat-label>
             <mat-select name="skillSet" ngModel multiple required>
@@ -60,7 +54,6 @@
                 Skill Set is <strong>required</strong>
             </mat-error>
         </mat-form-field>
-
         <div class="buttons-container">
             <button mat-raised-button color="primary" class="submit-button" type="submit">Submit</button>
             <button mat-raised-button color="warn" class="cancel-button" type="button"

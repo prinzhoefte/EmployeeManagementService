@@ -1,6 +1,4 @@
-1. Create delete view from the update template
-2. Create profile page
-3. Create Popup Profile page (Upper corner)
-4. Ask Thiel why we HAVE to use the /e./id/qualifications endpoints (Unnecessary)
-5. Ask Thiel how the login should be realized because we do not use keycloak (Probably just gonna implement it anyways)
-6. Finish the page switcher for the first page
+1. Create profile page
+2. Create Popup Profile page (Upper corner)
+3. Ask Thiel why we HAVE to use the /e./id/qualifications endpoints (Unnecessary)
+4. Ask Thiel how the login should be realized because we do not use keycloak (Probably just gonna implement it anyways)

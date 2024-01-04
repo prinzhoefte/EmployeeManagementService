@@ -19,6 +19,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { BaseEmployeeComponent } from './base-employee/base-employee.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +29,9 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
         TopBarComponent,
         ProfileComponent,
         AddEmployeeComponent,
-        UpdateEmployeeComponent
+        UpdateEmployeeComponent,
+        DeleteEmployeeComponent,
+        BaseEmployeeComponent
     ],
     imports: [
         BrowserModule,
