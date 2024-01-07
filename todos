@@ -1,4 +1,3 @@
 1. Create profile page
-2. Create Popup Profile page (Upper corner)
-3. Exchange the "error" messages when you entered false data from a altert to a proper popup
-4. Integrate keycloak
+2. Exchange the "error" messages when you entered false data from a altert to a proper popup
+3. Integrate keycloak
