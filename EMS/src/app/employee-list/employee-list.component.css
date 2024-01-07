@@ -30,11 +30,23 @@
     background-color: #941824;
 }
 
-.filter-field {
+.container {
+    margin: 20px;
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
-    width: 500px;
-    margin: 10px;
+    justify-content: space-between;
+    width: auto;
+}
+
+.filter-field {
+    width: 30%;
+    box-sizing: border-box;
+}
+
+.items-per-page-field {
+    width: 10%;
+    box-sizing: border-box;
 }
 
 .filter-container {
@@ -80,4 +92,3 @@
 .pagination-button:hover {
     background-color: #2d3c8f;
 }
-  

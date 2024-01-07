@@ -1,17 +1,27 @@
 <mat-card>
-    <mat-form-field appearance="outline" class="filter-field">
-        <mat-label>Filter</mat-label>
-        <div class="filter-container">
-            <input matInput (keyup)="applyFilter($event)" placeholder="Search" class="search-input">
-            <mat-select [(ngModel)]="selectedFilterField" (selectionChange)="updateFilterField($event)"
-                class="filter-type">
-                <mat-option *ngFor="let column of getFilteredColumns()" [value]="column">
-                    {{ filterTypeOptions[column] || column }}
+    <div class="container">
+        <mat-form-field appearance="outline" class="filter-field">
+            <mat-label>Filter</mat-label>
+            <div class="filter-container">
+                <input matInput (keyup)="applyFilter($event)" placeholder="Search" class="search-input">
+                <mat-select [(ngModel)]="selectedFilterField" (selectionChange)="updateFilterField($event)"
+                    class="filter-type">
+                    <mat-option *ngFor="let column of getFilteredColumns()" [value]="column">
+                        {{ filterTypeOptions[column] || column }}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="items-per-page-field">
+            <mat-label>Items Per Page</mat-label>
+            <mat-select [(ngModel)]="itemsPerPage" (selectionChange)="updateItemsPerPage($event.value)">
+                <mat-option *ngFor="let option of itemsPerPageOptions" [value]="option">
+                    {{ option }}
                 </mat-option>
             </mat-select>
-        </div>
-        <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+        </mat-form-field>
+    </div>
     <mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>

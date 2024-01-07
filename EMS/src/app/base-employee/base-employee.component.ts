@@ -39,10 +39,10 @@ export class BaseEmployeeComponent {
 
     protected checkValidity(form: any): boolean {
         let ret = true;
-        const nameRegex = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ]+$/;
-        const addressRegex = /^[a-zA-Z0-9öäüÖÄÜßéÉèÈáÁíÍóÓúÚñÑçÇ\s]+$/;
-        const phoneNumberRegex = /^[0-9+]{8,}$/;
-        const postcodeRegex = /^[0-9]{5}$/;
+        const nameRegex: RegExp = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ]+$/;
+        const addressRegex: RegExp = /^[a-zA-Z0-9öäüÖÄÜßéÉèÈáÁíÍóÓúÚñÑçÇ\s]+$/;
+        const phoneNumberRegex: RegExp = /^[0-9+]{8,}$/;
+        const postcodeRegex: RegExp = /^[0-9]{5}$/;
         if (!nameRegex.test(form.value.firstName)) {
             alert("First name must only contain letters");
             ret = false;

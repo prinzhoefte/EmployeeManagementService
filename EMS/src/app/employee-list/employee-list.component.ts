@@ -9,37 +9,16 @@ import { Router } from '@angular/router';
     templateUrl: './employee-list.component.html',
     styleUrls: ['./employee-list.component.css']
 })
-
 export class EmployeeListComponent {
-    displayedColumns: string[] = ['id', 'lastName', 'firstName', 'street', 'postcode', 'city', 'phone', 'skillSet', 'actions'];
+    displayedColumns = ['id', 'lastName', 'firstName', 'street', 'postcode', 'city', 'phone', 'skillSet', 'actions'];
     employeesChunks: any[][] = [];
-    dataSource = new MatTableDataSource();
+    dataSource = new MatTableDataSource<any>();
     employees$: Observable<any[]>;
-    currentPage: number = 1;
-    pageSize: number = 10;
-    totalPages: number = 0;
-
-    constructor(private employeeService: EmployeeService, private router: Router) {
-        this.employees$ = this.employeeService.getEmployees();
-        this.employees$.subscribe(data => {
-            const transformedData = data.map(employee => ({
-                ...employee,
-                skillSet: employee.skillSet.map((skill: { skill: string; id: number; }) => skill.skill).join(', ')
-            }));
-            transformedData.sort((a, b) => a.id - b.id);
-            this.employeesChunks = this.chunkArray(transformedData, this.pageSize);
-            this.dataSource.data = this.employeesChunks[this.currentPage - 1] || [];
-            this.totalPages = this.employeesChunks.length;
-        });
-    }
-
-    chunkArray(array: any[], size: number): any[][] {
-        const chunkedArray = [];
-        for (let i = 0; i < array.length; i += size) {
-            chunkedArray.push(array.slice(i, i + size));
-        }
-        return chunkedArray;
-    }
+    currentPage = 1;
+    itemsPerPage = 10;
+    itemsPerPageOptions = [5, 10, 15, 20, 25, 30];
+    totalPages = 0;
+    data: any[] = [];
 
     filterTypeOptions: { [key: string]: string } = {
         'id': 'ID',
@@ -52,7 +31,41 @@ export class EmployeeListComponent {
         'skillSet': 'Skill Set'
     };
 
-    selectedFilterField: string = 'id';
+    selectedFilterField = 'id';
+
+    constructor(private employeeService: EmployeeService, private router: Router) {
+        this.employees$ = this.employeeService.getEmployees();
+        this.employees$.subscribe(data => {
+            this.data = this.transformData(data);
+            this.setupDataSource();
+        });
+    }
+
+    transformData(data: any[]): any[] {
+        return data.map(employee => ({
+            ...employee,
+            skillSet: employee.skillSet.map((skill: { skill: string; id: number }) => skill.skill).join(', ')
+        })).sort((a, b) => a.id - b.id);
+    }
+
+    setupDataSource() {
+        this.employeesChunks = this.chunkArray(this.data, this.itemsPerPage);
+        this.totalPages = this.employeesChunks.length;
+        this.dataSource.data = this.employeesChunks[this.currentPage - 1] || [];
+    }
+
+    chunkArray(array: any[], size: number): any[][] {
+        const chunkedArray = [];
+        for (let i = 0; i < array.length; i += size) {
+            chunkedArray.push(array.slice(i, i + size));
+        }
+        return chunkedArray;
+    }
+
+    updateItemsPerPage(value: number) {
+        this.itemsPerPage = value;
+        this.setupDataSource();
+    }
 
     updateFilterField(event: any) {
         this.selectedFilterField = event.value;
