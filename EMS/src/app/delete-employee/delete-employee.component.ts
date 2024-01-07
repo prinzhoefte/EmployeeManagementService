@@ -8,9 +8,9 @@ import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
 
 })
 export class DeleteEmployeeComponent extends BaseEmployeeComponent {
-    onDelete() {
+    public onDelete() {
         this.employeeService.deleteEmployee(this.id).subscribe(() => {
-            this.router.navigate(['/home']); 
+            this.router.navigate(['/home']);
         });
     }
 }

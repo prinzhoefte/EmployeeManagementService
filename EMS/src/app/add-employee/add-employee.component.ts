@@ -20,7 +20,7 @@ export class AddEmployeeComponent extends BaseEmployeeComponent {
         );
     }
 
-    onSubmit(form: NgForm) {
+    public onSubmit(form: NgForm) {
         if (form.valid) {
             if (this.checkValidity(form) === false) {
                 return;

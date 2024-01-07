@@ -41,20 +41,20 @@ export class EmployeeListComponent {
         });
     }
 
-    transformData(data: any[]): any[] {
+    private transformData(data: any[]): any[] {
         return data.map(employee => ({
             ...employee,
             skillSet: employee.skillSet.map((skill: { skill: string; id: number }) => skill.skill).join(', ')
         })).sort((a, b) => a.id - b.id);
     }
 
-    setupDataSource() {
+    private setupDataSource() {
         this.employeesChunks = this.chunkArray(this.data, this.itemsPerPage);
         this.totalPages = this.employeesChunks.length;
         this.dataSource.data = this.employeesChunks[this.currentPage - 1] || [];
     }
 
-    chunkArray(array: any[], size: number): any[][] {
+    private chunkArray(array: any[], size: number): any[][] {
         const chunkedArray = [];
         for (let i = 0; i < array.length; i += size) {
             chunkedArray.push(array.slice(i, i + size));
@@ -62,20 +62,20 @@ export class EmployeeListComponent {
         return chunkedArray;
     }
 
-    updateItemsPerPage(value: number) {
+    public updateItemsPerPage(value: number) {
         this.itemsPerPage = value;
         this.setupDataSource();
     }
 
-    updateFilterField(event: any) {
+    public updateFilterField(event: any) {
         this.selectedFilterField = event.value;
     }
 
-    getFilteredColumns(): string[] {
+    public getFilteredColumns(): string[] {
         return this.displayedColumns.filter(column => column !== 'actions');
     }
 
-    applyFilter(event: Event) {
+    public applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
         this.dataSource.filterPredicate = (data: any, filter: string) => {
             const dataStr = JSON.stringify(data[this.selectedFilterField]).toLowerCase();
@@ -84,22 +84,22 @@ export class EmployeeListComponent {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    onDelete(id: number) {
+    public onDelete(id: number) {
         this.router.navigate(['/deleteEmployee', id]);
     }
 
-    onEdit(id: number) {
+    public onEdit(id: number) {
         this.router.navigate(['/updateEmployee', id]);
     }
 
-    onNextPage() {
+    public onNextPage() {
         if (this.currentPage < this.totalPages) {
             this.currentPage++;
             this.dataSource.data = this.employeesChunks[this.currentPage - 1];
         }
     }
 
-    onPreviousPage() {
+    public onPreviousPage() {
         if (this.currentPage > 1) {
             this.currentPage--;
             this.dataSource.data = this.employeesChunks[this.currentPage - 1];

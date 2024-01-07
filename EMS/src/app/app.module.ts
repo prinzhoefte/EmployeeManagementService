@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
 import { BaseEmployeeComponent } from './base-employee/base-employee.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -46,7 +48,9 @@ import { BaseEmployeeComponent } from './base-employee/base-employee.component';
         MatIconModule,
         MatSelectModule,
         MatToolbarModule,
-        FormsModule
+        FormsModule,
+        MatMenuModule,
+        MatButtonModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -14,7 +14,7 @@ export class BaseEmployeeComponent {
 
     constructor(protected employeeService: EmployeeService, protected router: Router) { }
 
-    ngOnInit(): void {
+    protected ngOnInit(): void {
         this.id = Number(this.router.url.split('/')[2]);
         this.fetchEmployee();
         this.fetchSkillSetItems();
@@ -70,11 +70,11 @@ export class BaseEmployeeComponent {
         return ret;
     }
 
-    compareFn(item1: any, item2: any): boolean {
+    public compareFn(item1: any, item2: any): boolean {
         return item1 && item2 ? item1.id === item2.id : item1 === item2;
     }
 
-    onCancel(): void {
+    public onCancel(): void {
         this.router.navigate(['/']);
     }
 }

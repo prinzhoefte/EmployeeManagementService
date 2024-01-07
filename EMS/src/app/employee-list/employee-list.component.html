@@ -58,10 +58,10 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
             <mat-cell *matCellDef="let employee">
-                <button class="edit-button" mat-icon-button color="primary" (click)="onEdit(employee.id)">
+                <button class="button-base edit-button" mat-icon-button color="primary" (click)="onEdit(employee.id)">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button class="delete-button" mat-icon-button color="warn" (click)="onDelete(employee.id)">
+                <button class="button-base delete-button" mat-icon-button color="warn" (click)="onDelete(employee.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </mat-cell>

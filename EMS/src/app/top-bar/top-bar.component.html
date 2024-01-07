@@ -4,8 +4,12 @@
     <button class="tab-button" mat-button routerLink="/profile" routerLinkActive="active">Profile</button>
     <button class="tab-button" mat-button routerLink="/addEmployee" routerLinkActive="active">Add</button>
     <span class="spacer"></span>
-    <button class="tab-button" mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
+    <mat-menu #accountMenu="matMenu">
+        <button mat-menu-item routerLink="/profile">Profile</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+        <mat-icon class="large-icon">account_circle</mat-icon>
     </button>
 </mat-toolbar>
   

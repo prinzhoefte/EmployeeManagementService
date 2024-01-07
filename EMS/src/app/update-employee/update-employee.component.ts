@@ -9,7 +9,7 @@ import { BaseEmployeeComponent } from '../base-employee/base-employee.component'
     styleUrls: ['../app.component.css']
 })
 export class UpdateEmployeeComponent extends BaseEmployeeComponent {
-    onSubmit(form: NgForm): void {
+    public onSubmit(form: NgForm): void {
         if (form.valid) {
             if (this.checkValidity(form) === false) {
                 return;
