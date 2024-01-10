@@ -81,7 +81,12 @@ export class EmployeeListComponent {
             const dataStr = JSON.stringify(data[this.selectedFilterField]).toLowerCase();
             return dataStr.includes(filter.trim().toLowerCase());
         };
+    
+        this.dataSource.data = this.data;
         this.dataSource.filter = filterValue.trim().toLowerCase();
+        this.employeesChunks = this.chunkArray(this.dataSource.filteredData, this.itemsPerPage);
+        this.employeesChunks.length === 0 ? this.totalPages = 1 : this.updateTotalPages();
+        this.dataSource.data = this.employeesChunks[this.currentPage - 1] || [];
     }
 
     public onDelete(id: number) {
@@ -104,5 +109,9 @@ export class EmployeeListComponent {
             this.currentPage--;
             this.dataSource.data = this.employeesChunks[this.currentPage - 1];
         }
+    }
+
+    private updateTotalPages() {
+        this.totalPages = this.employeesChunks.length;
     }
 }
