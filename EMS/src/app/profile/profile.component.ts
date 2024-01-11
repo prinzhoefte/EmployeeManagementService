@@ -6,5 +6,22 @@ import { Component } from '@angular/core';
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+    username: string = "Default";
+    email: string = "Default";
 
+    constructor() {
+        let token = localStorage.getItem("token");
+        if (token) {
+            let decodedToken = this.getDecodedAccessToken(token);
+            this.username = decodedToken.preferred_username;
+            this.email = decodedToken.email;
+        }
+
+        this.username = undefined ? "Not set by user" : this.username;
+        this.email = undefined ? "Not set by user" : this.email;
+    }
+
+    private getDecodedAccessToken(token: string): any {
+        return token ? JSON.parse(atob(token.split('.')[1])) : null;
+    }
 }
