@@ -41,7 +41,7 @@ export class BaseEmployeeComponent {
         let ret = true;
         const nameRegex: RegExp = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ]+$/;
         const addressRegex: RegExp = /^[a-zA-Z0-9öäüÖÄÜßéÉèÈáÁíÍóÓúÚñÑçÇ\s]+$/;
-        const phoneNumberRegex: RegExp = /^[0-9+]{8,}$/;
+        const phoneNumberRegex: RegExp = /^[0-9+()x-]{8,}$/;
         const postcodeRegex: RegExp = /^[0-9]{5}$/;
         if (!nameRegex.test(form.value.firstName)) {
             alert("First name must only contain letters");
@@ -64,7 +64,7 @@ export class BaseEmployeeComponent {
             ret = false;
         }
         if (!phoneNumberRegex.test(form.value.phone)) {
-            alert("Phone number must only contain numbers and '+'");
+            alert("Phone number is not valid");
             ret = false;
         }
         return ret;
