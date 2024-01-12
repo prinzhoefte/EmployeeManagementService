@@ -1,3 +1,1 @@
-1. Create profile page
-2. Exchange the "error" messages when you entered false data from a altert to a proper popup
-3. Fix keycloak loading the page twice
+1. Fix keycloak loading the page twice

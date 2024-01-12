@@ -40,7 +40,6 @@ export class BaseEmployeeComponent {
     protected checkValidity(form: any): boolean {
         let ret = true;
         const nameRegex: RegExp = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ]+$/;
-        const addressRegex: RegExp = /^[a-zA-Z0-9öäüÖÄÜßéÉèÈáÁíÍóÓúÚñÑçÇ\s]+$/;
         const phoneNumberRegex: RegExp = /^[0-9+()x-]{8,}$/;
         const postcodeRegex: RegExp = /^[0-9]{5}$/;
         if (!nameRegex.test(form.value.firstName)) {
@@ -51,11 +50,11 @@ export class BaseEmployeeComponent {
             alert("Last name must only contain letters");
             ret = false;
         }
-        if (!addressRegex.test(form.value.street)) {
+        if (!nameRegex.test(form.value.street)) {
             alert("Street must only contain letters and numbers");
             ret = false;
         }
-        if (!addressRegex.test(form.value.city)) {
+        if (!nameRegex.test(form.value.city)) {
             alert("City must only contain letters");
             ret = false;
         }
