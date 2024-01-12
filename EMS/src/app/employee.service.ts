@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Employee, EmployeeUpdate } from './models/Employee';
 
 @Injectable({
@@ -37,20 +37,5 @@ export class EmployeeService {
 
     getSkillSetItems(): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/qualifications`);
-    }
-
-    //Get skill endpoint (useless? Because the skills are send with the normal request aswell)
-    getSkillOfEmployee(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/employees/${id}/qualifications`);
-    }
-
-    //Maybe use this for updating the employee, if only the skills are changed
-    addSkillToEmployee(id: number, skill: string): Observable<any[]> {
-        return this.http.post<any[]>(`${this.apiUrl}/employees/${id}/qualifications`, skill);
-    }
-
-    //Maybe use this for updating the employee, if only the skills are changed
-    removeSkillFromEmployee(id: number, skill: string): Observable<any[]> {
-        return this.http.delete<any[]>(`${this.apiUrl}/employees/${id}/qualifications/${skill}`);
     }
 }
