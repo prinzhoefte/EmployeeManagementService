@@ -383,6 +383,7 @@
     "emailVerified" : false,
     "firstName" : "",
     "lastName" : "",
+    "email" : "felix.lange@rheinmetall.com",
     "credentials" : [ {
       "id" : "79b219f4-91c4-48fe-85ea-1e90e7b22f81",
       "type" : "password",
@@ -405,6 +406,7 @@
     "emailVerified" : false,
     "firstName" : "",
     "lastName" : "",
+    "email" : "hendrik.rathje@rheinmetall.com",
     "credentials" : [ {
       "id" : "401834c5-b3ae-4b12-aea5-4f1fc43380f1",
       "type" : "password",
@@ -427,6 +429,7 @@
     "emailVerified" : false,
     "firstName" : "Justin",
     "lastName" : "Rauch",
+    "email" : "justin.rauch@rheinmetall.com",
     "credentials" : [ {
       "id" : "89e11519-4bf6-4c99-95cd-aae0d83e8781",
       "type" : "password",
@@ -449,6 +452,7 @@
     "emailVerified" : false,
     "firstName" : "",
     "lastName" : "",
+    "email" : "t.thiel@schule.bremen.de",
     "credentials" : [ {
       "id" : "38201f77-2d94-4cec-b3fa-41b68f16df75",
       "type" : "password",

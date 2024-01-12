@@ -2,6 +2,15 @@
 
 A simple **Employee Management Service** built with **Angular** for managing employees and their skills.
 
+## Passwords and User accounts
+# For the employee management system
+1. Username: Thiel, Password: thiel (Changeable)
+2. Username: Justin, Password: ***
+3. Username: Felix, Password: felix
+4. Username: Hendrik, Password: hendrik
+# For Keycloak itself
+1. Username: admin, Password: admin
+
 ## Features
 
 - Display a list of employees with their details and skills.

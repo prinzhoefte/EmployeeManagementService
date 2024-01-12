@@ -2,15 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
 
-## Passwords and User accounts
-# For the employee management system
-1. Username: Thiel, Password: thiel (Changeable)
-2. Username: Justin, Password: ***
-3. Username: Felix, Password: felix
-4. Username: Hendrik, Password: hendrik
-# For Keycloak itself
-1. Username: admin, Password: admin
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
