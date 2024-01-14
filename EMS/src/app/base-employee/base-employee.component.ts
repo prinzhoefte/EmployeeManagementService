@@ -39,7 +39,7 @@ export class BaseEmployeeComponent {
 
     protected checkValidity(form: any): boolean {
         let ret = true;
-        const nameRegex: RegExp = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ]+$/;
+        const nameRegex: RegExp = /^[a-zA-Z' \-\döüäÄÖÜßéÉèÈáÁíÍóÓúÚñÑçÇ.]+$/;
         const phoneNumberRegex: RegExp = /^[0-9+()x-]{8,}$/;
         const postcodeRegex: RegExp = /^[0-9]{5}$/;
         if (!nameRegex.test(form.value.firstName)) {
