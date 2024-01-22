@@ -8,7 +8,7 @@ A simple **Employee Management Service** built with **Angular** for managing emp
 2. Username: Justin, Password: ***
 3. Username: Felix, Password: felix
 4. Username: Hendrik, Password: hendrik
-#### For Keycloak itself
+### For Keycloak itself
 1. Username: admin, Password: admin
 
 ## Features
