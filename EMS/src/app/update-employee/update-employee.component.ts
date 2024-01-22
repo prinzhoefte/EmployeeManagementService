@@ -16,7 +16,7 @@ export class UpdateEmployeeComponent extends BaseEmployeeComponent {
             }
 
             const skillSet = form.value.skillSet.map((skill: any) => skill.id);
-            
+
             const updateEmployee: EmployeeUpdate = {
                 ...form.value,
                 skillSet

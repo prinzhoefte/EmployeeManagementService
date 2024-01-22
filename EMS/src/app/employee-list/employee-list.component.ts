@@ -39,7 +39,7 @@ export class EmployeeListComponent {
             this.data = this.transformData(data);
             this.setupDataSource();
         });
-        if(localStorage.getItem("itemsPerPage") === null) {
+        if (localStorage.getItem("itemsPerPage") === null) {
             localStorage.setItem("itemsPerPage", this.itemsPerPage.toString());
         } else {
             this.itemsPerPage = Number(localStorage.getItem("itemsPerPage"));
@@ -87,7 +87,7 @@ export class EmployeeListComponent {
             const dataStr = JSON.stringify(data[this.selectedFilterField]).toLowerCase();
             return dataStr.includes(filter.trim().toLowerCase());
         };
-    
+
         this.dataSource.data = this.data;
         this.dataSource.filter = filterValue.trim().toLowerCase();
         this.employeesChunks = this.chunkArray(this.dataSource.filteredData, this.itemsPerPage);
