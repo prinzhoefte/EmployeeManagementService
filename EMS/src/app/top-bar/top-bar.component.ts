@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import Keycloak from 'keycloak-js';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-top-bar',
@@ -14,7 +13,7 @@ export class TopBarComponent {
         clientId: 'web-auth'
     });
 
-    constructor(private router: Router) {
+    constructor() {
         this.initKeycloak();
     }
 
