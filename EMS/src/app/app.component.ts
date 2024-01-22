@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-    title: string = "Employee Management System";
-
-    constructor() {
-
-    }
 }
