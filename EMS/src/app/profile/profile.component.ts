@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-profile',
@@ -9,12 +10,14 @@ export class ProfileComponent {
     username: string = "Default";
     email: string = "Default";
 
-    constructor() {
+    constructor(private router: Router) {
         let token = localStorage.getItem("token");
         if (token) {
             let decodedToken = this.getDecodedAccessToken(token);
             this.username = decodedToken.preferred_username;
             this.email = decodedToken.email;
+        } else {
+            this.router.navigate(['/']);
         }
 
         this.username = (this.username == undefined) ? "Not set by user" : this.username;

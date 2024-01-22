@@ -6,10 +6,18 @@
     <span class="spacer"></span>
     <mat-menu #accountMenu="matMenu">
         <button mat-menu-item routerLink="/profile">Profile</button>
-        <button mat-menu-item (click)="logout()">Logout</button>
+        <button mat-menu-item (click)="showLogoutDialog = true">Logout</button>
     </mat-menu>
     <button mat-icon-button [matMenuTriggerFor]="accountMenu">
         <mat-icon class="large-icon">account_circle</mat-icon>
     </button>
 </mat-toolbar>
-  
+
+<div class="overlay" *ngIf="showLogoutDialog">
+    <div class="modal">
+        <h2>Logout</h2>
+        <p>Are you sure you want to log out?</p>
+        <button mat-raised-button color="warn" class="cancel-button" (click)="logout()">Logout</button>
+        <button mat-raised-button color="primary" class="submit-button" (click)="cancelLogout()">Cancel</button>
+    </div>
+</div>

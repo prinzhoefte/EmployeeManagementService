@@ -39,6 +39,11 @@ export class EmployeeListComponent {
             this.data = this.transformData(data);
             this.setupDataSource();
         });
+        if(localStorage.getItem("itemsPerPage") === null) {
+            localStorage.setItem("itemsPerPage", this.itemsPerPage.toString());
+        } else {
+            this.itemsPerPage = Number(localStorage.getItem("itemsPerPage"));
+        }
     }
 
     private transformData(data: any[]): any[] {
@@ -64,6 +69,7 @@ export class EmployeeListComponent {
 
     public updateItemsPerPage(value: number) {
         this.itemsPerPage = value;
+        localStorage.setItem("itemsPerPage", value.toString());
         this.setupDataSource();
     }
 
